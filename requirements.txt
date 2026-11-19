@@ -1,0 +1,11 @@
+# Scientific-Python dependencies for the reproducible dataset.
+# Tested with Python 3.10 on Windows; Python 3.9+ is supported.
+# reproduce_tables.py needs only NumPy; SciPy and Matplotlib are used by code/.
+numpy>=2.0
+scipy>=1.10
+matplotlib>=3.7
+
+# Verified versions used to produce the archived results:
+#   numpy==2.2.6
+#   scipy==1.15.3
+#   matplotlib==3.10.9

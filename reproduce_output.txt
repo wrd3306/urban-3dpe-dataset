@@ -1,0 +1,73 @@
+﻿
+==============================================================================
+Table 2.  PE vs coherent-ray error over 12 receiver lines (dB)
+==============================================================================
+receiver heights z (m) : [np.int64(10), np.int64(15), np.int64(20), np.int64(25)]
+cross positions  y (m) : [np.int64(-10), np.int64(0), np.int64(10)]
+columns: z, y, mean, RMS, p95, LOS-rms, rooftop-rms, deep-rms, n
+------------------------------------------------------------------------------
+ 10  -10 |  4.66  7.38 15.39 |  0.16   4.97  17.08 |  195
+ 10    0 |  4.54  6.57 13.00 |  0.11   5.74  12.59 |  194
+ 10   10 |  2.86  4.42  9.61 |  0.16   3.81   8.36 |  194
+ 15  -10 |  2.73  4.51  8.39 |  0.07   4.33   7.56 |  197
+ 15    0 |  2.05  3.36  7.03 |  0.03   3.05   6.16 |  196
+ 15   10 |  5.26  8.33 17.90 |  0.07   8.92   9.91 |  196
+ 20  -10 |  3.01  5.02 12.17 |  0.05   5.78   3.53 |  197
+ 20    0 |  2.32  3.13  4.92 |  0.01   2.96   5.35 |  197
+ 20   10 |  4.23  6.09 10.75 |  0.05   5.66  10.61 |  197
+ 25  -10 |  1.22  2.00  4.33 |  0.07   1.57   4.17 |  197
+ 25    0 |  1.58  2.63  6.26 |  0.01   1.78   6.10 |  197
+ 25   10 |  3.05  4.49  8.87 |  0.07   3.57   9.35 |  197
+------------------------------------------------------------------------------
+POOLED: mean = 3.13   RMS = 5.18   95th = 9.89 dB
+(manuscript reports pooled 3.1 / 5.2 dB; LOS pooled 0.07 dB, rooftop 4.35 dB, deep 8.40 dB)
+
+==============================================================================
+Table 3.  Parameter-sensitivity sweep, pooled 12-line errors (dB)
+==============================================================================
+array column order: [np.str_('mean'), np.str_('rms'), np.str_('p95'), np.str_('los'), np.str_('roof'), np.str_('deep')]
+= mean, RMS, p95, LOS, rooftop, deep (all pooled RMS except first 3)
+------------------------------------------------------------------------------
+case                              mean   RMS    p95   LOS  roof  deep  Nyq
+frequency 700 MHz                 3.34  5.56  11.15  0.09  4.62  9.42  20.1°
+frequency 900 MHz (reference)     3.13  5.18   9.89  0.07  4.35  8.40  15.5°
+frequency 1800 MHz                3.59  5.62  10.68  0.04  4.73  9.83   7.7°
+source height 10 m                5.46  8.15  16.87  3.27  6.13 13.31  15.5°
+source height 20 m (reference)    3.13  5.18   9.89  0.07  4.35  8.40  15.5°
+source height 30 m                3.29  5.71   9.70  0.49  5.35  3.17  15.5°
+layout regular uniform            3.55  5.23   7.89  3.44  4.06  5.25  15.5°
+
+==============================================================================
+Independent FDTD validation (RMS dB, from fdtd_errors.npz)
+==============================================================================
+Free-space cylindrical spreading:
+  PE   vs analytic Hankel      = 0.043 dB
+  FDTD vs analytic Hankel      = 0.455 dB
+PEC ground two-ray interference at z = 3 m:
+  FDTD vs PE                   = 2.293 dB
+  FDTD vs image method         = 2.443 dB
+  PE   vs image method         = 3.118 dB
+PEC half-plane knife-edge diffraction:
+  FDTD vs PE                   = 0.433 dB
+  FDTD vs Fresnel knife-edge   = 0.422 dB
+
+==============================================================================
+Grid convergence, angular spectrum and cost (urban_grid.npz)
+==============================================================================
+y=0,z=15 path-loss curve, Ny=192 vs Ny=384 (in-building points excluded):
+  mean difference = 0.97 dB,  RMS = 1.88 dB
+
+Lateral power beyond 15.5 deg at the four cross-planes (%):
+  plane 1: 0.0583%
+  plane 2: 0.0043%
+  plane 3: 0.0032%
+  plane 4: 0.0793%
+  range 0.003%-0.079%, mean 0.0363% (manuscript: 0.003%-0.08%, mean 0.036%)
+
+Desktop CPU wall-clock for one 1 km march (800 steps, Nz=4096):
+  Ny=192 (dy=0.625 m): 65.9 s   (reported ~66 s)
+  Ny=384 (dy=0.3125 m): 133.5 s  (reported ~131 s; single-thread timing
+                                         varies by a few seconds between runs)
+
+All statistics were read directly from the provided .npz files;
+the core SSFT-PE / ray / FDTD programs that generated them are in ./code.
