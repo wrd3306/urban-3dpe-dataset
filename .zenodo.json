@@ -1,0 +1,44 @@
+{
+  "title": "Reproducible dataset for Three-Dimensional Wide-Angle Split-Step Parabolic-Equation Modelling of Urban Microcells (MAP-2026-10-0176)",
+  "description": "Reproducible dataset accompanying the manuscript 'Three-Dimensional Wide-Angle Split-Step Parabolic-Equation Modelling of Urban Microcells: A Component-Wise Error Budget over Leontovich Ground and Knife Screens' (IET Microwaves, Antennas & Propagation, MAP-2026-10-0176). It contains the 3D wide-angle SSFT-PE solver and reference methods (coherent 3D ray model, independent Yee FDTD, analytic references), four processed .npz data files, and a reproduce_tables.py driver that recomputes the reported tables and validation numbers without re-running the full-wave simulations. See README.md for contents and verification.",
+  "upload_type": "dataset",
+  "keywords": [
+    "parabolic equation",
+    "split-step Fourier transform",
+    "urban radio propagation",
+    "Leontovich impedance boundary",
+    "knife-edge diffraction",
+    "FDTD",
+    "ray tracing",
+    "reproducible research"
+  ],
+  "creators": [
+    {
+      "name": "Wang, Ruidong",
+      "orcid": "0000-0003-0910-9726",
+      "affiliation": "School of Electrical and Information Engineering, North Minzu University, Yinchuan 750021, China"
+    },
+    {
+      "name": "Han, Chao",
+      "affiliation": "School of Electrical and Information Engineering, North Minzu University, Yinchuan 750021, China"
+    },
+    {
+      "name": "Wang, Meiru",
+      "affiliation": "School of Electrical and Information Engineering, North Minzu University, Yinchuan 750021, China"
+    },
+    {
+      "name": "Wang, Zhibo",
+      "affiliation": "School of Electrical and Information Engineering, North Minzu University, Yinchuan 750021, China"
+    }
+  ],
+  "license": "MIT",
+  "access_right": "open",
+  "language": "eng",
+  "related_identifiers": [
+    {
+      "relation": "isSupplementTo",
+      "identifier": "MAP-2026-10-0176",
+      "scheme": "other"
+    }
+  ]
+}
