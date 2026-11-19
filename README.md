@@ -108,7 +108,7 @@ the solver, the reference implementations and the reproduction scripts, are
 publicly available in this repository and archived with a persistent DOI on
 Zenodo:
 
-- **Repository:** https://github.com/<your-github-username>/urban-3dpe-dataset
+- **Repository:** https://github.com/wrd3306/urban-3dpe-dataset
 - **Zenodo archive (DOI):** https://doi.org/10.5281/zenodo.<RECORD-ID>
 
 The complete three-dimensional field-history arrays (10–20 GB per case, which
